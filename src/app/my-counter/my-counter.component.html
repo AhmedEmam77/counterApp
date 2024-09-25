@@ -1,0 +1,18 @@
+<div class="counter-container">
+  <div class="counter-display">
+    <div class="counter-label">Current Count:</div>
+    <div class="counter-value">{{ count$ | async }}</div>
+  </div>
+
+  <div class="counter-buttons">
+    <button class="counter-btn increment-btn" (click)="increment()">
+      Increment
+    </button>
+    <button class="counter-btn decrement-btn" (click)="decrement()">
+      Decrement
+    </button>
+    <button class="counter-btn reset-btn" (click)="reset()">
+      Reset Counter
+    </button>
+  </div>
+</div>

@@ -1,0 +1,346 @@
+/* The overlay background */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 999;
+  overflow-y: auto; /* Allow scrolling when content exceeds viewport */
+}
+
+.overlay.show {
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  padding: 20px; /* Add padding to prevent dialog from touching edges */
+  box-sizing: border-box;
+}
+
+/* The modal dialog itself */
+.custom-dialog {
+  position: relative; /* Changed from fixed to relative */
+  width: 800px;
+  left: 300px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 30px 24px;
+  z-index: 1000;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  display: none;
+  max-height: 90vh; /* Prevent dialog from exceeding viewport height */
+  overflow-y: auto; /* Allow internal scrolling if content is too long */
+}
+
+.custom-dialog.show {
+  display: block;
+}
+
+/* The content inside the modal dialog */
+.custom-dialog-content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header section with X icon */
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Style for "Report a Bug" text */
+.dialog-header h2 {
+  font-family: "Inter", sans-serif;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 31.5px;
+  text-align: left;
+}
+
+.close-icon {
+  font-size: 24px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+/* Form Group Styles */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 14px;
+  text-align: left;
+}
+
+.form-group-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-group-row .form-group {
+  flex: 1;
+}
+
+/* Ensures input and select elements have the same width */
+.form-group input,
+.form-group select {
+  width: 100%;
+  height: 40px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+/* Style for expanding inputs (textarea) */
+.expanding-input {
+  width: 100%;
+  min-height: 40px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  resize: none; /* Prevent manual resizing */
+  overflow: hidden;
+  outline: none;
+}
+
+.expanding-input:focus {
+  border-color: #d9342b;
+}
+
+/* Placeholder styling for textarea */
+.expanding-input::placeholder {
+  color: #aaa;
+}
+
+/* File Attach Buttons: arranged in the same row */
+.file-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-attach {
+  width: 179px;
+  height: 40px;
+  padding: 7px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1px solid #d9342b;
+  border-radius: 6px;
+  background-color: transparent;
+  color: #d9342b;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-attach:hover {
+  background-color: #d9342b;
+  color: white;
+}
+
+.btn-attach i {
+  color: inherit;
+}
+
+/* Screenshot grid for multiple images */
+.screenshot-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.screenshot-container {
+  position: relative;
+  width: 232px;
+  height: 160px;
+  border: 1px solid #d9342b;
+  border-radius: 2px;
+}
+
+.screenshot-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.screenshot-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+/* Hover effect with icons */
+.screenshot-wrapper:hover .hover-icons {
+  display: flex;
+}
+
+.hover-icons {
+  display: none;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  gap: 5px;
+}
+
+.hover-icons i {
+  cursor: pointer;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 5px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.hover-icons i:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.device-info {
+  font-size: 12px;
+  background-color: #f7f7f7;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn-cancel {
+  width: 179px;
+  height: 40px;
+  padding: 7px 16px;
+  border-radius: 6px;
+  border: 1px solid #d9342b;
+  background-color: transparent;
+  color: #d9342b;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-cancel:hover {
+  background-color: #d9342b;
+  color: white;
+}
+
+.btn-submit {
+  width: 179px;
+  height: 40px;
+  padding: 7px 16px;
+  border-radius: 6px;
+  background-color: #d9342b;
+  color: white;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+  background-color: #c12a25;
+}
+
+/* Bug Reports Table */
+.bug-reports-table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.bug-reports-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.bug-reports-table th,
+.bug-reports-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+  vertical-align: top;
+  word-wrap: break-word;
+}
+
+.bug-reports-table th {
+  background-color: #f2f2f2;
+}
+
+.bug-reports-table td {
+  max-width: 200px;
+}
+
+.bug-reports-table td img {
+  width: 50px;
+  height: 50px;
+  margin-right: 5px;
+}
+
+.bug-reports-table td .screenshot-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Success Message Styling */
+.success-message {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-family: "Inter", sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 850px) {
+  .custom-dialog {
+    width: 90%;
+  }
+
+  .screenshot-container {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-group-row {
+    flex-direction: column;
+  }
+
+  .file-buttons {
+    flex-direction: column;
+  }
+
+  .btn-attach {
+    width: 100%;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .btn-cancel,
+  .btn-submit {
+    width: 100%;
+  }
+}

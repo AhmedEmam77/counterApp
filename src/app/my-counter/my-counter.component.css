@@ -1,0 +1,102 @@
+/* General Styles */
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f0f4f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Counter Container */
+.counter-container {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 300px;
+  text-align: center;
+}
+
+/* Display Section */
+.counter-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.counter-label {
+  font-size: 18px;
+  color: #555;
+}
+
+.counter-value {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Button Styles */
+.counter-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.counter-btn {
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.counter-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Specific Button Colors */
+.increment-btn {
+  background-color: #28a745;
+}
+
+.increment-btn:hover {
+  background-color: #218838;
+}
+
+.decrement-btn {
+  background-color: #dc3545;
+}
+
+.decrement-btn:hover {
+  background-color: #c82333;
+}
+
+.reset-btn {
+  background-color: #ffc107;
+}
+
+.reset-btn:hover {
+  background-color: #e0a800;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .counter-container {
+    padding: 15px;
+  }
+
+  .counter-btn {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+
+  .counter-value {
+    font-size: 24px;
+  }
+}

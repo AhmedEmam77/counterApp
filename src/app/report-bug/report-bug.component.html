@@ -1,0 +1,195 @@
+<!-- Report a Bug Modal -->
+<button (click)="openDialog()" class="btn-report-bug">Report a Bug</button>
+
+<div id="customDialog" class="custom-dialog show" [class.show]="isDialogOpen">
+  <div class="custom-dialog-content">
+    <div class="dialog-header">
+      <h2>Report a Bug</h2>
+      <span class="close-icon" (click)="closeDialog()">&times;</span>
+    </div>
+
+    <!-- Success Message -->
+    <div *ngIf="submissionSuccess" class="success-message">
+      Bug report submitted successfully!
+    </div>
+
+    <form #bugForm="ngForm" (ngSubmit)="submitBugReport(bugForm)">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          id="title"
+          type="text"
+          [(ngModel)]="newBugReport.title"
+          name="title"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea
+          id="description"
+          class="expanding-input"
+          [(ngModel)]="newBugReport.description"
+          name="description"
+          required
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="steps">Steps to Reproduce</label>
+        <textarea
+          id="steps"
+          class="expanding-input"
+          [(ngModel)]="newBugReport.stepsToReproduce"
+          name="steps"
+          required
+        ></textarea>
+      </div>
+
+      <div class="form-group-row">
+        <div class="form-group">
+          <label for="priority">Priority</label>
+          <select
+            id="priority"
+            [(ngModel)]="newBugReport.priority"
+            name="priority"
+            required
+          >
+            <option value="">Select...</option>
+            <option>Low</option>
+            <option>Medium</option>
+            <option>High</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select
+            id="category"
+            [(ngModel)]="newBugReport.category"
+            name="category"
+            required
+          >
+            <option value="">Select...</option>
+            <option>UI</option>
+            <option>Functionality</option>
+            <option>Performance</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="attach-file">Attach Files</label>
+        <div class="file-buttons">
+          <button type="button" class="btn-attach">
+            <i class="fas fa-file-upload"></i> Browse
+          </button>
+          <button type="button" class="btn-attach" (click)="takeScreenshot()">
+            <i class="fas fa-camera"></i> Take Screenshot
+          </button>
+          <button type="button" class="btn-attach">
+            <i class="fas fa-video"></i> Record Video
+          </button>
+        </div>
+      </div>
+
+      <!-- Screenshot Grid -->
+      <div class="screenshot-grid">
+        <div
+          *ngFor="let screenshot of screenshots; let i = index"
+          class="screenshot-container"
+        >
+          <div class="screenshot-wrapper">
+            <img [src]="screenshot" alt="Screenshot" />
+            <div class="hover-icons">
+              <i class="fas fa-eye" (click)="viewScreenshot(screenshot)"></i>
+              <i class="fas fa-redo" (click)="retakeScreenshotAtIndex(i)"></i>
+              <i class="fas fa-trash-alt" (click)="deleteScreenshot(i)"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="device-info">
+        <p><strong>Browser/Device Info:</strong></p>
+        <p>Browser: {{ browserInfo }}</p>
+        <p>OS: {{ osInfo }}</p>
+        <p>Device: {{ deviceInfo }}</p>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn-cancel" (click)="closeDialog()">
+          Cancel
+        </button>
+        <button type="submit" class="btn-submit">Submit Report</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Screenshot Modal -->
+<div
+  id="screenshotDialog"
+  class="custom-dialog"
+  [class.show]="isScreenshotDialogOpen"
+>
+  <div class="custom-dialog-content">
+    <div class="dialog-header">
+      <h2>Captured Screenshot</h2>
+      <span class="close-icon" (click)="closeScreenshotDialog()">&times;</span>
+    </div>
+    <div class="screenshot-preview">
+      <img #screenshotImage [src]="currentScreenshot" alt="Screenshot" />
+    </div>
+    <div class="form-actions">
+      <button type="button" class="btn-cancel" (click)="retakeScreenshot()">
+        Retake
+      </button>
+      <button type="button" class="btn-submit" (click)="submitScreenshot()">
+        Submit Screenshot
+      </button>
+    </div>
+  </div>
+</div>
+
+<div
+  id="overlay"
+  class="overlay"
+  [class.show]="isDialogOpen || isScreenshotDialogOpen"
+></div>
+
+<!-- Display Bug Reports as a Table -->
+<div *ngIf="bugReports.length > 0" class="bug-reports-table">
+  <h3>Submitted Bug Reports</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Steps</th>
+        <th>Priority</th>
+        <th>Category</th>
+        <th>Screenshots</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let report of bugReports">
+        <td>{{ report.title }}</td>
+        <td>{{ report.description }}</td>
+        <td>{{ report.stepsToReproduce }}</td>
+        <td>{{ report.priority }}</td>
+        <td>{{ report.category }}</td>
+        <td>
+          <div class="screenshot-grid">
+            <img
+              *ngFor="let screenshot of report.screenshots"
+              [src]="screenshot"
+              alt="Screenshot"
+              class="table-screenshot"
+            />
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
