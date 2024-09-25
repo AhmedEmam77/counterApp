@@ -76,22 +76,10 @@ export class ReportBugComponent implements OnInit, AfterViewInit {
     const userAgent = navigator.userAgent;
 
     // Browser info
-    let isBrave = false;
-
-    // Detect Brave browser
-    if ((navigator as any).brave && (navigator as any).brave.isBrave) {
-      isBrave = true;
-    }
-
-    // Fallback to user agent string matching
     const browserMatch = userAgent.match(
-      /(brave|firefox|msie|trident|chrome|safari|opera)/i
+      /(firefox|msie|trident|chrome|safari|opera)/i
     );
-    this.browserInfo = isBrave
-      ? 'Brave'
-      : browserMatch
-      ? browserMatch[0]
-      : 'Unknown';
+    this.browserInfo = browserMatch ? browserMatch[0] : 'Unknown';
 
     // OS info
     const osMatch = userAgent.match(
