@@ -1,0 +1,155 @@
+.user-card {
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 0 auto; /* Center the card itself horizontally */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the content inside the user card horizontally */
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+}
+
+.qr-code-container {
+  width: 190px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  border: 3px solid #014488;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.qr-code {
+  width: 180px;
+  height: 180px;
+}
+
+.user-info {
+  text-align: left; /* Align the text to the start (left) */
+  width: 100%; /* Ensure the width is 100% to fill the container */
+  padding-left: 16px; /* Optional: Add padding if you want some space on the left */
+}
+
+h4 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+p {
+  font-size: 16px;
+  color: #666;
+  margin: 4px 0;
+  text-align: left; /* Ensure the paragraphs are also aligned to the left */
+}
+
+.personal-info {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+  position: relative; /* Required to position the personal image on top of the logo */
+}
+
+.personal-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: fill;
+  border: 3px solid white;
+  position: absolute;
+  left: 35px; /* Move it to the left with 50px margin */
+  bottom: -10px; /* This will overlap with the logo container */
+  z-index: 2; /* Ensure the personal image appears above the logo */
+}
+
+.logo-container {
+  width: 100%; /* Fixed width for the container */
+  display: flex;
+  justify-content: center; /* Center the content horizontally */
+  margin-bottom: 16px; /* Add some space below */
+}
+
+/* Background container with a fixed width and background color */
+.logo-background {
+  width: 100%; /* 100% of the parent container */
+  height: 120px; /* Adjust the height if necessary */
+  background-color: #1e90ff;
+  display: flex;
+  justify-content: center; /* Center the image horizontally */
+  align-items: center; /* Center the image vertically */
+  border-radius: 12px;
+  padding: 20px; /* Optional padding to minimize the image */
+}
+
+/* Adjust the logo image itself */
+.logo-img {
+  width: 60%; /* Adjust the size of the logo */
+  height: 80%;
+  object-fit: fill;
+  border-radius: 8px;
+}
+
+/* Updated contact-info styling */
+.contact-info {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between; /* Align email and phone sections side-by-side */
+  gap: 20px; /* Space between email and phone sections */
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between icon and text */
+  margin-bottom: 10px; /* Add a gap between each contact item */
+}
+
+.contact-icon {
+  width: 24px; /* Adjust the size of the icons */
+  height: 24px;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column; /* Stack email/phone and label */
+}
+
+.contact-details span {
+  font-family: Almarai, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: left;
+  color: #666; /* Adjust the color if necessary */
+}
+
+.additional-data {
+  margin-top: 16px;
+}
+
+.additional-data div {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between icon and text */
+  margin-bottom: 10px; /* Gap between each additional data item */
+}
+
+.circular-image {
+  width: 5%;
+  height: 5%;
+  padding: 1.5%;
+  object-fit: fill;
+  border-radius: 50%;
+  background-color: #1e90ff;
+  border: 2px solid white;
+}

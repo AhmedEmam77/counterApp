@@ -128,6 +128,23 @@
   display: flex;
   gap: 10px;
 }
+.btn-report-bug {
+  width: 179px;
+  height: 40px;
+  margin-top: 300;
+  padding: 7px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border-radius: 6px;
+  background-color: transparent;
+  color: #2c1795;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  transition: background-color 0.3s, color 0.3s;
+}
 
 .btn-attach {
   width: 179px;

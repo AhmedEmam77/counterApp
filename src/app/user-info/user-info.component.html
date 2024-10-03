@@ -1,0 +1,101 @@
+<div class="user-card">
+  <h2>{{ userInfo?.cardName }}</h2>
+
+  <!-- QR Code Section -->
+  <div *ngIf="qrCodeData; else noQrCode" class="qr-code-container">
+    <qrcode [qrdata]="qrCodeData" errorCorrectionLevel="M"></qrcode>
+  </div>
+  <ng-template #noQrCode>
+    <p>No QR code available</p>
+  </ng-template>
+
+  <!-- User Information Section -->
+  <div class="user-info">
+    <div class="personal-info">
+      <!-- Company Logo -->
+      <div class="logo-container">
+        <div
+          class="logo-background"
+          [ngStyle]="{ 'background-color': getUserColor() }"
+        >
+          <img
+            [src]="
+              userInfo?.croppedLogoImg?.downloadUrl ||
+              userInfo?.logoImg?.downloadUrl
+                ? userInfo?.croppedLogoImg?.downloadUrl ||
+                  userInfo?.logoImg?.downloadUrl
+                : 'assets/images/sherkety-logo-combined.png'
+            "
+            alt="Company Logo"
+            class="logo-img"
+            [ngStyle]="
+              !(
+                userInfo?.croppedLogoImg?.downloadUrl ||
+                userInfo?.logoImg?.downloadUrl
+              )
+                ? { filter: 'brightness(0) saturate(100%) invert(100%)' }
+                : {}
+            "
+          />
+        </div>
+      </div>
+
+      <!-- Personal Image overlapping the logo -->
+      <img
+        *ngIf="
+          userInfo?.croppedPersonalImg?.downloadUrl ||
+          userInfo?.personalImg?.downloadUrl
+        "
+        [src]="
+          userInfo?.croppedPersonalImg?.downloadUrl ||
+          userInfo?.personalImg?.downloadUrl
+        "
+        alt="Personal Image"
+        class="personal-img"
+      />
+    </div>
+    <h4>{{ userInfo?.firstName }} {{ userInfo?.lastName }}</h4>
+    <p>{{ userInfo?.jobTitle }}</p>
+    <p>{{ userInfo?.company }}</p>
+    <br />
+    <!-- Contact Information Section -->
+    <div class="contact-item">
+      <img
+        src="assets/images/Vector.png"
+        alt="Vector Image"
+        class="circular-image"
+        [ngStyle]="{ 'background-color': getUserColor() }"
+      />
+      <div class="contact-details">
+        <span>{{ userInfo?.email }}</span>
+      </div>
+    </div>
+
+    <div class="contact-item">
+      <img
+        src="assets/images/Vector-1.png"
+        alt="Additional Icon"
+        class="circular-image"
+        [ngStyle]="{ 'background-color': getUserColor() }"
+      />
+      <div class="contact-details">
+        <span>{{ userInfo?.mobileNumber }}</span>
+      </div>
+    </div>
+
+    <div
+      *ngFor="let data of userInfo?.additionalData || []"
+      class="contact-item"
+    >
+      <img
+        [src]="data.imageName"
+        alt="Additional Icon"
+        class="circular-image"
+        [ngStyle]="{ 'background-color': getUserColor() }"
+      />
+      <div class="contact-details">
+        <span class="additional-text">{{ data.text }}</span>
+      </div>
+    </div>
+  </div>
+</div>
